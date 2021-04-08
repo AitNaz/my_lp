@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aitbaeva Nazira</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <script>
+        $(function(){
+            $('button').on('click', function(){
+                $('.popup_layout').css('display', 'flex');
+            });
+
+            $('.popup_layout').on('click', function(event){
+                if(event.target === this) {
+                    $('.popup_layout').css('display', 'none');
+                }
+            });
+
+            $('.popup_close').on('click', function(){
+                $('.popup_layout').css('display', 'none');
+            });
+
+            $('input[type="submit"]').on('click', function(){
+                let request = {
+                    'name': $('#name').val(),
+                    'email': $('#email').val()
+                };
+
+                $.post('/api.php', request, function(response){
+                    if(response == '1') {
+                        $('.popup_layout').css('display', 'none');
+                    } else {
+                        alert('Ошибка :(');
+                    };
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="popup_layout">
+        <div class="popup">
+            <div class="popup_close"></div>
+            <h3>Оставьте заявку</h3>
+            <div class="form_field">
+                <input type="text" placeholder="Имя" id="name">
+            </div>
+
+            <div class="form_field">
+                <input type="email" placeholder="Эл.почта" id="email">
+            </div>
+
+            <div class="button_container">
+                <input type="submit" class="form_button" value="Отправить">
+            </div>
+        </div>
+    </div>
+    <!-- Шапка сайта -->
+    <header class="fixed_container">
+        <nav>
+            <a href="#">Услуги</a>
+            <a href="#">Портфолио</a>
+            <a href="#">Стоимость</a>
+        </nav>
+
+        <div class="phone_whatsapp">
+            <div>+996 558-21-77-11</div>
+            <button>WhatsApp консультация</button>
+        </div>
+    </header>
+
+    <!-- Презентация меня -->
+    <section class="fixed_container first_block">
+        <div>
+            <div class="name">
+                <h1>АЙТБАЕВА НАЗИРА</h1>
+                <p>Frontend разработчик и веб-верстальщик</p>
+                <button>Узнать больше</button>
+            </div>
+            <div class="photo"></div>
+        </div>
+    </section>
+    
+    <!-- Что я умею делать -->
+
+    <section class="fixed_container services_block">
+        <h2>Что я делаю</h2>
+        <div class="services_list">
+            <div class="service_1">Вёрстка лендинг-страниц<br>и сайтов любой сложности</div>
+            <div class="service_2">Адаптивная вёрстка под<br>все браузеры и устройства</div>
+            <div class="service_3">Frontend-разработка<br>и программирование</div>
+            <div class="service_4">Исправление и доработка<br>существующей вёрстки</div>
+        </div>
+    </section>
+
+    <section class="prices_block">
+        <div class="fixed_container">
+            <div class="price_text">
+                Адаптивная вёрстка под все<br>
+                устройства и браузеры<br>
+                от 1000 сомов всего за 1 день.*
+            </div>
+            <small>* Срок и стоимость могут отличаться от заявленных и рассчитываются<br>индивидуально в зависимости от сложности задач.</small>
+        </div>
+    </section>
+    <footer>
+        <p class="fixed_container footer_block">
+            <!-- Instagram
+            Telegram -->
+        </p>
+    </footer>
+</body> -->
